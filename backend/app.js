@@ -14,14 +14,18 @@ if (process.env.NODE_ENV !== "production") {
   config({ path: "./.env" });
 }
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:5174",
+];
+
+if (process.env.FRONTEND_URL) {
+  allowedOrigins.push(...process.env.FRONTEND_URL.split(",").map((url) => url.trim()));
+}
+
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "http://localhost:5174",
-      "https://frontend-swart-chi-76.vercel.app",
-      "https://frontend-3t8t6f74i-anukriti-s-projects.vercel.app",
-    ],
+    origin: allowedOrigins,
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
