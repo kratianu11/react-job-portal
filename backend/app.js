@@ -17,6 +17,8 @@ app.use(
     origin: [
       "http://localhost:5173",
       "http://localhost:5174",
+      "https://frontend-swart-chi-76.vercel.app",
+      "https://frontend-3t8t6f74i-anukriti-s-projects.vercel.app",
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
