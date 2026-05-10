@@ -5,7 +5,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { FaPencilAlt } from "react-icons/fa";
 import { FaPhoneFlip } from "react-icons/fa6";
 import { Link, Navigate } from "react-router-dom";
-import axios from "axios";
+import axiosInstance from "../../api/axiosInstance";
 import toast from "react-hot-toast";
 import { Context } from "../../main";
 
@@ -24,15 +24,9 @@ const Register = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const { data } = await axios.post(
-        "http://localhost:4000/api/v1/user/register",
-        { name, phone, email, role, password },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          withCredentials: true,
-        }
+      const { data } = await axiosInstance.post(
+        "/user/register",
+        { name, phone, email, role, password }
       );
       toast.success(data.message);
       setName("");
@@ -40,6 +34,7 @@ const Register = () => {
       setPassword("");
       setPhone("");
       setRole("");
+      setUser(data.user);
       setIsAuthorized(true);
     } catch (error) {
       toast.error(error.response.data.message);

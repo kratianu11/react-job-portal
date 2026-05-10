@@ -1,43 +1,56 @@
 import React from "react";
-import { FaUserPlus } from "react-icons/fa";
-import { MdFindInPage } from "react-icons/md";
-import { IoMdSend } from "react-icons/io";
+import {
+  FaUserPlus,
+  FaSearch,
+  FaCheckCircle,
+} from "react-icons/fa";
 
 const HowItWorks = () => {
+  const steps = [
+    {
+      id: 1,
+      icon: <FaUserPlus />,
+      title: "Create Account",
+      description:
+        "Sign up and build your professional profile to get started.",
+    },
+    {
+      id: 2,
+      icon: <FaSearch />,
+      title: "Find Jobs",
+      description:
+        "Explore thousands of jobs from top companies worldwide.",
+    },
+    {
+      id: 3,
+      icon: <FaCheckCircle />,
+      title: "Apply Easily",
+      description:
+        "Submit applications quickly and connect with recruiters.",
+    },
+  ];
+
   return (
-    <>
-      <div className="howitworks">
-        <div className="container">
-          <h3>How Career Connect Works !</h3>
-          <div className="banner">
-            <div className="card">
-              <FaUserPlus />
-              <p>Create Account</p>
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Consequuntur, culpa.
-              </p>
+    <section className="howitworks">
+      <div className="container">
+        <div className="heading">
+          <h2>How CareerConnect Works</h2>
+          <p>
+            Get started with your career journey in just a few simple steps.
+          </p>
+        </div>
+
+        <div className="banner">
+          {steps.map((step) => (
+            <div className="card" key={step.id}>
+              <div className="icon">{step.icon}</div>
+              <h4>{step.title}</h4>
+              <p>{step.description}</p>
             </div>
-            <div className="card">
-              <MdFindInPage />
-              <p>Find a Job/Post a Job</p>
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Consequuntur, culpa.
-              </p>
-            </div>
-            <div className="card">
-              <IoMdSend />
-              <p>Apply For Job/Recruit Suitable Candidates</p>
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Consequuntur, culpa.
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
-    </>
+    </section>
   );
 };
 

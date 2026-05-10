@@ -1,23 +1,62 @@
-import React, { useContext } from 'react'
-import {Context} from "../../main"
-import {Link} from "react-router-dom"
-import { FaGithub , FaLinkedin} from "react-icons/fa"
+import React, { useContext } from "react";
+import { Context } from "../../main";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
-import { RiInstagramFill} from "react-icons/ri"
-function Footer() {
-  const {isAuthorized}  = useContext(Context)
-  return (
-    <footer className= {isAuthorized ? "footerShow" : "footerHide"}>
-<div>&copy; All Rights Reserved by Abhishek.</div>
-<div>
-  <Link to={'https://github.com/exclusiveabhi'} target='github'><FaGithub></FaGithub></Link>
-  <Link to={'https://leetcode.com/u/exclusiveabhi/'} target='leetcode'><SiLeetcode></SiLeetcode></Link>
-  <Link to={'https://www.linkedin.com/in/abhishek-rajput-/'} target='linkedin'><FaLinkedin></FaLinkedin></Link>
-  <Link to={'https://www.instagram.com/exclusiveabhi/'} target='instagram'><RiInstagramFill></RiInstagramFill></Link>
-</div>
-      
-    </footer>
-  )
-}
+import { RiInstagramFill } from "react-icons/ri";
 
-export default Footer
+const Footer = () => {
+  const { isAuthorized } = useContext(Context);
+
+  if (!isAuthorized) return null;
+
+  return (
+    <footer className="bg-black px-6 py-6 text-white">
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 md:flex-row">
+        
+        <p className="text-sm text-gray-400">
+          © 2025 CareerConnect. All rights reserved.
+        </p>
+
+        <div className="flex items-center gap-5 text-2xl">
+          <a
+            href="https://github.com"
+            target="_blank"
+            rel="noreferrer"
+            className="transition hover:text-gray-400"
+          >
+            <FaGithub />
+          </a>
+
+          <a
+            href="https://leetcode.com"
+            target="_blank"
+            rel="noreferrer"
+            className="transition hover:text-yellow-400"
+          >
+            <SiLeetcode />
+          </a>
+
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noreferrer"
+            className="transition hover:text-blue-400"
+          >
+            <FaLinkedin />
+          </a>
+
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noreferrer"
+            className="transition hover:text-pink-400"
+          >
+            <RiInstagramFill />
+          </a>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

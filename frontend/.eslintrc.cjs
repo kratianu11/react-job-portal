@@ -16,5 +16,12 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    'no-unknown-property': 'off',
   },
+  overrides: [
+    {
+      files: ['**/*.css'],
+      customSyntax: 'postcss-syntax',
+    },
+  ],
 }
