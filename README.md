@@ -1,232 +1,297 @@
-# CareerConnect - Advanced React Job Portal
+# CareerConnect - MERN Job Portal
 
-A modern, full-featured job portal built with React 18, featuring advanced search, saved jobs, drag-and-drop applications, and a professional UI. Designed for both job seekers and employers with responsive design and dark mode support.
+CareerConnect is a full-stack job portal built with React, Node.js, Express, and MongoDB. It supports separate job seeker and employer workflows, including authentication, job posting, job browsing, saved jobs, resume uploads, and application management.
 
-## 🚀 Features
+## Live Demo
 
-### For Job Seekers:
-- **Smart Search & Filters**: Real-time search with category, location, and salary filters
-- **Saved Jobs**: Save jobs locally for later review
-- **Advanced Applications**: Drag-and-drop resume upload with multi-format support
-- **Dashboard**: Personal dashboard with application tracking
-- **Profile Management**: Update preferences and theme settings
+- Frontend: https://react-job-portal-wic3.vercel.app
+- Backend API: https://react-job-portal-backend-hvst.onrender.com/api/v1
 
-### For Employers:
-- **Post Jobs**: Create and manage job listings
-- **Application Management**: View and manage job applications
-- **My Jobs**: Track posted jobs and their status
+## Features
 
-### Technical Features:
-- **Responsive Design**: Mobile-first approach with Tailwind CSS
-- **Dark Mode**: Theme toggle with localStorage persistence
-- **Loading States**: Skeleton loaders and error handling
-- **Authentication**: Protected routes with role-based access
-- **Modern UI**: Clean, professional design with smooth animations
+### Job Seekers
 
-## 🛠 Tech Stack
+- Register and log in as a job seeker
+- Browse available jobs
+- Search and filter jobs by keyword, category, location, and salary range
+- Save jobs locally for later
+- Apply to jobs with resume upload
+- View submitted applications
+- Access a personal dashboard and profile page
 
-- **Frontend**: React 18, Vite, Tailwind CSS
-- **State Management**: React Context API
-- **HTTP Client**: Axios with centralized configuration
-- **Icons**: React Icons
-- **Notifications**: React Hot Toast
-- **Routing**: React Router DOM
-- **Build Tool**: Vite
+### Employers
 
-## 📦 Installation
+- Register and log in as an employer
+- Post new jobs
+- View and manage posted jobs
+- Review applications submitted for jobs
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/yourusername/career-connect.git
-   cd career-connect/frontend
-   ```
+### Technical Features
 
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
+- JWT authentication with HTTP-only cookies
+- Role-based protected routes
+- Centralized Axios API client
+- Cloudinary resume upload support
+- Responsive React UI built with Tailwind CSS
+- Dark mode support
+- Vercel frontend deployment and Render backend deployment
 
-3. **Environment Setup**:
-   Create a `.env` file in the frontend directory:
-   ```env
-   VITE_API_URL=http://localhost:4000/api/v1
-   ```
+## Tech Stack
 
-4. **Start development server**:
-   ```bash
-   npm run dev
-   ```
+### Frontend
 
-5. **Build for production**:
-   ```bash
-   npm run build
-   ```
+- React 18
+- Vite
+- Tailwind CSS
+- React Router DOM
+- Axios
+- React Hot Toast
+- React Icons
+- Vitest and React Testing Library
 
-## 🧪 Testing
+### Backend
 
-Run tests with:
-```bash
-npm test
+- Node.js
+- Express.js
+- MongoDB and Mongoose
+- JSON Web Token
+- Bcrypt
+- Cookie Parser
+- Express File Upload
+- Cloudinary
+- CORS
+
+## Project Structure
+
+```text
+react-job-portal/
+  backend/
+    controllers/
+    database/
+    middlewares/
+    models/
+    routes/
+    utils/
+    app.js
+    server.js
+  frontend/
+    public/
+    src/
+      api/
+      components/
+      test/
+    index.html
+    vite.config.js
+  render.yaml
+  README.md
 ```
 
-## 🚀 Deployment
+## Getting Started
 
-### Frontend Deployment (Vercel)
+### Prerequisites
 
-1. **Connect to Vercel**:
-   - Push your code to GitHub
-   - Go to [Vercel](https://vercel.com) and sign in
-   - Click "New Project" and import your repository
+- Node.js 18 or newer
+- npm
+- MongoDB Atlas database
+- Cloudinary account
 
-2. **Configure Environment Variables**:
-   ```env
-   VITE_API_URL=https://your-backend-url.com/api/v1
-   ```
+### Clone The Repository
 
-3. **Deploy**:
-   - Vercel will automatically detect it's a Vite project
-   - Click "Deploy"
-   - Your site will be live at `https://your-project.vercel.app`
+```bash
+git clone https://github.com/kratianu11/react-job-portal.git
+cd react-job-portal
+```
 
-### Backend Deployment (Render)
+### Backend Setup
 
-1. **Connect to Render**:
-   - Go to [Render](https://render.com) and sign in
-   - Click "New +" and select "Web Service"
+```bash
+cd backend
+npm install
+cp .env.example .env
+```
 
-2. **Configure Service**:
-   - Connect your GitHub repository
-   - Set build command: `npm install`
-   - Set start command: `npm start`
-   - Add environment variables from your `.env` file
+Fill in `backend/.env`:
 
-3. **Deploy**:
-   - Click "Create Web Service"
-   - Your API will be live at `https://your-service.onrender.com`
+```env
+PORT=4000
+NODE_ENV=development
+FRONTEND_URL=http://localhost:5173
+DB_URL=your_mongodb_connection_string
+JWT_SECRET_KEY=your_jwt_secret
+JWT_EXPIRE=7d
+COOKIE_EXPIRE=7
+CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+CLOUDINARY_API_KEY=your_cloudinary_api_key
+CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+```
 
-### Alternative Deployment Options
+Start the backend:
 
-- **Netlify**: Drag and drop the `dist` folder after running `npm run build`
-- **GitHub Pages**: Use `gh-pages` package for free hosting
-- **Railway**: Similar to Render, supports Node.js apps
-- **Heroku**: Traditional choice for Node.js deployments
+```bash
+npm run dev
+```
 
-## 🔧 Environment Variables
+The backend runs on:
 
-### Frontend (.env)
+```text
+http://localhost:4000
+```
+
+### Frontend Setup
+
+Open a second terminal:
+
+```bash
+cd frontend
+npm install
+cp .env.example .env
+```
+
+Fill in `frontend/.env`:
+
 ```env
 VITE_API_URL=http://localhost:4000/api/v1
 ```
 
-### Backend (.env)
-```env
-PORT=4000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-CLOUDINARY_NAME=your_cloudinary_name
-CLOUDINARY_API_KEY=your_cloudinary_api_key
-CLOUDINARY_SECRET=your_cloudinary_secret
+Start the frontend:
+
+```bash
+npm run dev
 ```
 
-## 📊 Performance Optimizations
+The frontend runs on:
 
-- **Lazy Loading**: Components are loaded on-demand
-- **Image Optimization**: Lazy loading for images with loading states
-- **Code Splitting**: Automatic code splitting with Vite
-- **Caching**: Service worker for caching static assets
-- **Bundle Analysis**: Use `npm run build` to analyze bundle size
+```text
+http://localhost:5173
+```
 
-## 🧪 Testing Strategy
+## Available Scripts
 
-- **Unit Tests**: Component testing with Vitest and React Testing Library
-- **Integration Tests**: API endpoint testing
-- **E2E Tests**: End-to-end testing with Playwright (future enhancement)
-- **Performance Tests**: Lighthouse CI for performance monitoring
+### Backend
 
-## 🔒 Security Features
+```bash
+npm start
+```
 
-- JWT authentication with secure token handling
-- Protected routes with role-based access
-- Input validation and sanitization
-- CORS configuration
-- Rate limiting (backend)
-- Secure headers (helmet.js)
+Starts the Express server.
 
-## 📈 Monitoring & Analytics
+```bash
+npm run dev
+```
 
-- Error tracking with Sentry (recommended)
-- Performance monitoring with Lighthouse
-- User analytics with Google Analytics
-- Server monitoring with PM2
+Starts the Express server for local development.
 
-## 🤝 Contributing Guidelines
+### Frontend
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Commit your changes: `git commit -m 'Add amazing feature'`
-4. Push to the branch: `git push origin feature/amazing-feature`
-5. Open a Pull Request
+```bash
+npm run dev
+```
 
-### Code Standards
-- Use ESLint and Prettier for code formatting
-- Write tests for new features
-- Follow React best practices
-- Use TypeScript for type safety (future enhancement)
+Starts the Vite development server.
 
-## 📚 Additional Resources
+```bash
+npm run build
+```
 
-- [React Documentation](https://react.dev)
-- [Vite Documentation](https://vitejs.dev)
-- [Tailwind CSS](https://tailwindcss.com)
-- [React Router](https://reactrouter.com)
-- [Axios Documentation](https://axios-http.com)
+Builds the frontend for production.
 
----
+```bash
+npm test
+```
 
-**Built with ❤️ for the modern web**
+Runs frontend tests with Vitest.
 
-   - Create a `config.env` file after creating a `config folder` in the backend directory, containing the following variables:
+## Environment Variables
 
-   ```env
-   PORT=
-   CLOUDINARY_API_KEY=
-   CLOUDINARY_API_SECRET=
-   CLOUDINARY_CLOUD_NAME=
-   FRONTEND_URL=
-   DB_URL=
-   JWT_SECRET_KEY=
-   JWT_EXPIRE=
-   COOKIE_EXPIRE=
-   ```
+### Backend
 
-   Replace each value with your specific configuration details.
+| Variable | Description |
+| --- | --- |
+| `PORT` | Backend server port |
+| `NODE_ENV` | `development` or `production` |
+| `FRONTEND_URL` | Allowed frontend origin. Use comma-separated URLs for multiple deployments. |
+| `DB_URL` | MongoDB connection string |
+| `JWT_SECRET_KEY` | Secret used to sign JWTs |
+| `JWT_EXPIRE` | JWT expiry value, for example `7d` |
+| `COOKIE_EXPIRE` | Cookie expiry in days |
+| `CLOUDINARY_CLOUD_NAME` | Cloudinary cloud name |
+| `CLOUDINARY_API_KEY` | Cloudinary API key |
+| `CLOUDINARY_API_SECRET` | Cloudinary API secret |
 
-5. Run the application backend (make sure you are in `/backend` directory) :
+### Frontend
 
-   ```sh
-   node server.js
-   ```
+| Variable | Description |
+| --- | --- |
+| `VITE_API_URL` | Backend API base URL, for example `http://localhost:4000/api/v1` |
 
-6. Run the application frontend (make sure you are in `/frontend` directory) :
-   ```sh
-   npm run dev
-   ```
-7. Open your browser and navigate to `http://localhost:5173` to view the app.
+## Deployment
 
-## Contributing
+### Frontend On Vercel
 
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+1. Import the GitHub repository into Vercel.
+2. Set the project root directory to `frontend`.
+3. Set the build command to `npm run build`.
+4. Set the output directory to `dist`.
+5. Add this environment variable:
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request (`we will merge within 24 hour`)
+```env
+VITE_API_URL=https://react-job-portal-backend-hvst.onrender.com/api/v1
+```
 
-## Please give a star ⭐ to the repository if you like it.
+### Backend On Render
 
-## Contact
+This repository includes `render.yaml`.
 
-Abhishek Rajput - [GitHub](https://github.com/exclusiveabhi)
+Render settings:
 
-Project Link: [https://github.com/exclusiveabhi/react-job-portal.git](https://github.com/exclusiveabhi/react-job-portal.git)
+```text
+Build Command: cd backend && npm install
+Start Command: cd backend && npm start
+```
+
+Required Render environment variables:
+
+```env
+PORT=4000
+NODE_ENV=production
+FRONTEND_URL=https://react-job-portal-wic3.vercel.app
+DB_URL=your_mongodb_connection_string
+JWT_SECRET_KEY=your_jwt_secret
+JWT_EXPIRE=7d
+COOKIE_EXPIRE=7
+CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+CLOUDINARY_API_KEY=your_cloudinary_api_key
+CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+```
+
+For production cookies to work between Vercel and Render, keep `NODE_ENV=production` on Render and make sure `FRONTEND_URL` exactly matches the deployed Vercel URL.
+
+## API Routes
+
+Base URL:
+
+```text
+/api/v1
+```
+
+Main route groups:
+
+- `/user` - registration, login, logout, current user
+- `/job` - job listing, posting, updating, deleting
+- `/application` - job applications and resume uploads
+
+## Notes
+
+- Do not commit real `.env` files.
+- Use `.env.example` files as templates only.
+- Rotate credentials immediately if real database, JWT, or Cloudinary secrets were ever pushed to a public repository.
+
+## License
+
+This project is licensed under the MIT License.
+
+## Author
+
+Anukriti
+
+Project Link: https://github.com/kratianu11/react-job-portal
