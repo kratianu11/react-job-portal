@@ -14,9 +14,14 @@ if (process.env.NODE_ENV !== "production") {
   config({ path: "./.env" });
 }
 
+app.set("trust proxy", 1);
+
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:5174",
+  "https://frontend-swart-chi-76.vercel.app",
+  "https://react-job-portal-wic3.vercel.app",
+  "https://react-job-portal-smoky.vercel.app",
 ];
 
 if (process.env.FRONTEND_URL) {
@@ -25,7 +30,13 @@ if (process.env.FRONTEND_URL) {
 
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin(origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error("Not allowed by CORS"));
+    },
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })

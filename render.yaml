@@ -25,4 +25,4 @@ services:
       - key: COOKIE_EXPIRE
         value: 7
       - key: FRONTEND_URL
-        value: https://frontend-swart-chi-76.vercel.app
+        value: https://frontend-swart-chi-76.vercel.app,https://react-job-portal-wic3.vercel.app,https://react-job-portal-smoky.vercel.app

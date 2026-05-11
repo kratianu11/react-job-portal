@@ -1,10 +1,7 @@
 import axios from "axios";
 
-const baseURL = import.meta.env.VITE_API_URL;
-
-if (!baseURL && import.meta.env.PROD) {
-  console.warn("VITE_API_URL is not set. Frontend API requests may fail in production.");
-}
+const fallbackApiUrl = "https://react-job-portal-backend-hvst.onrender.com/api/v1";
+const baseURL = (import.meta.env.VITE_API_URL || fallbackApiUrl).replace(/\/$/, "");
 
 const axiosInstance = axios.create({
   baseURL,
